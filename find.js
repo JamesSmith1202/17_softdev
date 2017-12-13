@@ -2,10 +2,11 @@ var hue = 165;
 var saturation = 100;
 var light = 57;
 
-var threshold = 5;
+var threshold = 60;
 var box = document.getElementById("box");
 var boxHeight = box.offsetHeight;
 var boxWidth = box.offsetWidth;
+box.style.backgroundColor = "hsl("+hue+","+saturation+"%,"+light+"%)";
 
 //hardcode target as center
 //randomize later
@@ -42,10 +43,13 @@ var findIt = function(e) {
     var dist = distance(targetX, targetY, x, y);
     if (dist < threshold){
 	//you win
+	box.style.backgroundImage = "url('dw.jpg')";
+	console.log("wtf");
     }
     else{
+	console.log("lmao");
+	box.style.backgroundImage = null; 
 	box.style.backgroundColor = "hsl("+hue+","+saturation+"%,"+light*((maxDist-dist)/maxDist)+"%)";
     }
 };
 box.addEventListener("mousemove", findIt);
-
